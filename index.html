@@ -70,7 +70,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
 
@@ -248,17 +248,20 @@
           </button>
           <button class="sc-tab" role="tab" aria-selected="false" data-scene="1">
             <span class="sc-tab__n">02</span>
-            <span class="sc-tab__body"><strong>Agente de IA no WhatsApp</strong><small>Atende, qualifica e agenda — 24 horas por dia.</small></span>
+            <span class="sc-tab__body"><strong>Atendimento automático</strong><small>Atende, qualifica e agenda — 24 horas por dia.</small></span>
             <span class="sc-tab__bar"><i></i></span>
           </button>
           <button class="sc-tab" role="tab" aria-selected="false" data-scene="2">
             <span class="sc-tab__n">03</span>
-            <span class="sc-tab__body"><strong>Automação de processos</strong><small>Do lead ao relatório, sem ninguém copiar e colar.</small></span>
+            <span class="sc-tab__body"><strong>Conexão entre sistemas</strong><small>Do lead ao relatório, sem ninguém copiar e colar.</small></span>
             <span class="sc-tab__bar"><i></i></span>
           </button>
         </div>
 
-        <div class="screen" aria-live="off">
+        <div class="carousel">
+          <div class="carousel__track" tabindex="0" aria-label="Exemplos de projetos: deslize para ver os três">
+
+        <div class="slide"><div class="screen">
           <div class="screen__chrome">
             <span></span><span></span><span></span>
             <div class="screen__url">app.suaempresa.com.br</div>
@@ -297,8 +300,19 @@
               </div>
             </div>
 
+          </div>
+        </div></div>
+
+        <div class="slide"><div class="screen">
+          <div class="screen__chrome">
+            <span></span><span></span><span></span>
+            <div class="screen__url">WhatsApp · agente de IA</div>
+            <div class="screen__live"><i></i>ao vivo</div>
+          </div>
+          <div class="screen__stage">
+
             <!-- Cena 2: WhatsApp -->
-            <div class="scene scene--chat" data-scene="1">
+            <div class="scene scene--chat is-active" data-scene="1">
               <div class="phone">
                 <div class="phone__head"><img src="assets/monogram.svg" alt="" width="30" height="30"><div><strong>Sua Empresa</strong><small class="phone__status">online</small></div></div>
                 <div class="phone__body"></div>
@@ -311,8 +325,19 @@
               </div>
             </div>
 
+          </div>
+        </div></div>
+
+        <div class="slide"><div class="screen">
+          <div class="screen__chrome">
+            <span></span><span></span><span></span>
+            <div class="screen__url">automacoes.suaempresa.com.br</div>
+            <div class="screen__live"><i></i>ao vivo</div>
+          </div>
+          <div class="screen__stage">
+
             <!-- Cena 3: Automação -->
-            <div class="scene scene--flow" data-scene="2">
+            <div class="scene scene--flow is-active" data-scene="2">
               <svg class="flow__lines" viewBox="0 0 960 600">
                 <path id="fl1"/><path id="fl2"/><path id="fl3"/><path id="fl4"/>
               </svg>
@@ -325,6 +350,14 @@
               <div class="flow__count"><small>Tarefas automatizadas hoje</small><b>0</b></div>
             </div>
 
+          </div>
+        </div></div>
+
+          </div>
+          <div class="carousel__nav">
+            <button type="button" class="carousel__btn" data-dir="-1" aria-label="Exemplo anterior"><span aria-hidden="true">←</span></button>
+            <span class="carousel__count" aria-hidden="true"><b>1</b> / 3</span>
+            <button type="button" class="carousel__btn" data-dir="1" aria-label="Próximo exemplo"><span aria-hidden="true">→</span></button>
           </div>
         </div>
       </div>
@@ -513,7 +546,7 @@
   <script src="analytics.js?v=1"></script>
   <script src="main.js?v=5"></script>
   <script src="hero.js?v=3"></script>
-  <script src="showcase.js?v=2"></script>
+  <script src="showcase.js?v=3"></script>
   <script src="film.js?v=1"></script>
 </body>
 </html>

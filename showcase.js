@@ -1,25 +1,29 @@
-// Vitrine "O que construímos": três cenas animadas que rodam como vídeos em loop.
+// Vitrine "O que construímos": carrossel com três demonstrações animadas, cada uma em loop na própria tela.
 (() => {
-  const screen = document.querySelector('.screen');
-  if (!screen) return;
+  const track = document.querySelector('.carousel__track');
+  if (!track) return;
 
-  const stage = screen.querySelector('.screen__stage');
+  const slides = [...track.querySelectorAll('.slide')];
+  const screens = slides.map((s) => s.querySelector('.screen'));
+  const stages = screens.map((s) => s.querySelector('.screen__stage'));
+  const scenes = screens.map((s) => s.querySelector('.scene'));
   const tabs = [...document.querySelectorAll('.sc-tab')];
-  const scenes = [...screen.querySelectorAll('.scene')];
   const animated = typeof window.gsap !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const DUR = [9, 13.5, 11]; // segundos de cada cena antes de passar para a próxima
+  const DUR = [9, 13.5, 11]; // segundos de cada demonstração antes de recomeçar
   const NS = 'http://www.w3.org/2000/svg';
   let compact = false;
 
   /* ---------- Escala: o palco é desenhado em tamanho fixo e escalado ---------- */
   function fit() {
-    const w = stage.clientWidth;
+    const w = stages[0].clientWidth;
     compact = w < 640;
-    screen.classList.toggle('is-compact', compact);
     const dw = compact ? 480 : 960, dh = compact ? 640 : 600;
-    stage.style.setProperty('--dw', dw);
-    stage.style.setProperty('--dh', dh);
-    stage.style.setProperty('--s', w / dw);
+    screens.forEach((sc, i) => {
+      sc.classList.toggle('is-compact', compact);
+      stages[i].style.setProperty('--dw', dw);
+      stages[i].style.setProperty('--dh', dh);
+      stages[i].style.setProperty('--s', w / dw);
+    });
     drawFlow(dw, dh);
   }
 
@@ -105,19 +109,51 @@
     flowScene.querySelector('.flow__log ul').innerHTML = FLOW.map((f) => `<li><b>✓</b>${f.log}</li>`).join('');
   }
 
-  function activate(i) {
+  /* ---------- Carrossel: abas, setas e arraste levam direto a cada demonstração ---------- */
+  const count = document.querySelector('.carousel__count b');
+  const btns = [...document.querySelectorAll('.carousel__btn')];
+  const NAMES = ['painel_de_gestao', 'atendimento_automatico', 'conexao_entre_sistemas'];
+  let current = 0;
+
+  function mark(i) {
+    if (i === current && tabs[i].classList.contains('is-active')) return;
+    current = i;
     tabs.forEach((t, k) => { t.classList.toggle('is-active', k === i); t.setAttribute('aria-selected', k === i); });
-    scenes.forEach((s, k) => s.classList.toggle('is-active', k === i));
+    if (count) count.textContent = i + 1;
+    btns.forEach((b) => (b.disabled = i + +b.dataset.dir < 0 || i + +b.dataset.dir >= slides.length));
   }
+  function go(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    track.scrollTo({ left: slides[i].offsetLeft - slides[0].offsetLeft, behavior: animated ? 'smooth' : 'auto' });
+  }
+  let raf = 0;
+  track.addEventListener('scroll', () => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      const x = track.scrollLeft + slides[0].offsetLeft;
+      let best = 0;
+      slides.forEach((s, k) => { if (Math.abs(s.offsetLeft - x) < Math.abs(slides[best].offsetLeft - x)) best = k; });
+      // No fim da rolagem a última tela pode não alinhar à esquerda: conta como ativa
+      if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 4) best = slides.length - 1;
+      if (best === current) return;
+      mark(best);
+      document.dispatchEvent(new CustomEvent('elite:track', { detail: { name: 'showcase_view', params: { demo: NAMES[best] } } }));
+    });
+  }, { passive: true });
+  tabs.forEach((t, i) => t.addEventListener('click', () => go(i)));
+  btns.forEach((b) => b.addEventListener('click', () => go(current + +b.dataset.dir)));
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
+  });
 
   fit();
   window.addEventListener('resize', fit);
+  staticState(); // todas as telas já aparecem preenchidas, mesmo antes de animar
+  tabs[0].classList.remove('is-active');
+  mark(0);
 
-  if (!animated) {
-    staticState();
-    tabs.forEach((t, i) => t.addEventListener('click', () => activate(i)));
-    return;
-  }
+  if (!animated) return;
 
   /* ---------- Cena 1: Dashboard ---------- */
   function buildDash() {
@@ -233,32 +269,27 @@
     return t;
   }
 
-  /* ---------- Controle tipo "player de vídeo" ---------- */
+  /* ---------- Cada tela roda sozinha, em loop, enquanto está à vista ---------- */
   const builders = [buildDash, buildChat, buildFlow];
-  let current = 0, tl = null, timer = null, started = false;
+  const tls = [null, null, null], loops = [null, null, null];
 
   function play(i) {
-    current = i;
-    activate(i);
-    tl && tl.kill();
-    timer && timer.kill();
-    tabs.forEach((t) => gsap.set(t.querySelector('.sc-tab__bar i'), { scaleX: 0 }));
-    gsap.fromTo(scenes[i], { opacity: 0 }, { opacity: 1, duration: .5 });
-    tl = builders[i]();
-    timer = gsap.fromTo(tabs[i].querySelector('.sc-tab__bar i'), { scaleX: 0 }, {
-      scaleX: 1, duration: DUR[i], ease: 'none', onComplete: () => play((i + 1) % scenes.length),
-    });
+    tls[i] && tls[i].kill();
+    loops[i] && loops[i].kill();
+    tls[i] = builders[i]();
+    loops[i] = gsap.delayedCall(DUR[i], () => play(i));
   }
 
-  tabs.forEach((t, i) => t.addEventListener('click', () => play(i)));
-
-  const io = new IntersectionObserver(([e]) => {
-    if (e.isIntersecting) {
-      if (!started) { started = true; play(0); }
-      else { tl && tl.resume(); timer && timer.resume(); }
-    } else if (started) {
-      tl && tl.pause(); timer && timer.pause();
-    }
-  }, { threshold: .35 });
-  io.observe(screen);
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      const i = screens.indexOf(e.target);
+      if (e.isIntersecting) {
+        if (!tls[i]) play(i);
+        else { tls[i].resume(); loops[i].resume(); }
+      } else if (tls[i]) {
+        tls[i].pause(); loops[i].pause();
+      }
+    });
+  }, { threshold: .5 });
+  screens.forEach((s) => io.observe(s));
 })();
