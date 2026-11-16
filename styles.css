@@ -495,6 +495,40 @@ h3 { font-size: clamp(26px, 2.4vw, 34px); }
 .footer__wa:hover { color: var(--ivory); }
 .footer .brand { color: var(--ivory); font-size: 18px; }
 
+.footer__link, .footer__prefs { all: unset; color: var(--ivory-dim); transition: color .3s; }
+.footer__link:hover, .footer__prefs:hover { color: var(--ivory); }
+.footer__link:focus-visible, .footer__prefs:focus-visible { outline: 1px solid var(--champagne); outline-offset: 3px; }
+
+/* Aviso de cookies */
+.cookies {
+  position: fixed; left: 20px; bottom: 20px; z-index: 120; width: min(380px, calc(100vw - 40px));
+  padding: 24px 26px; background: var(--noir-2); border: 1px solid var(--line); font-size: 14px; line-height: 1.6;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .8);
+}
+.cookies p { margin: 0 0 18px; color: var(--ivory-dim); }
+.cookies .cookies__title { font-family: var(--serif); font-size: 24px; line-height: 1.1; color: var(--ivory); margin-bottom: 10px; }
+.cookies a { color: var(--ivory); text-decoration: underline; text-underline-offset: 3px; }
+.cookies__actions { display: flex; gap: 12px; }
+.cookies__btn {
+  all: unset; flex: 1; text-align: center; padding: 12px 10px; border: 1px solid var(--line);
+  font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--ivory);
+  transition: border-color .3s, background .3s, color .3s;
+}
+.cookies__btn:hover { border-color: var(--ivory-dim); }
+.cookies__btn--gold { border-color: var(--champagne); color: var(--champagne); }
+.cookies__btn--gold:hover { background: var(--champagne); color: var(--noir); border-color: var(--champagne); }
+.cookies__btn:focus-visible { outline: 1px solid var(--champagne); outline-offset: 3px; }
+
+/* Página de texto (privacidade) */
+.plain, .plain a, .plain button { cursor: auto; }
+.plain a, .plain button { cursor: pointer; }
+.legal { max-width: 760px; margin: 0 auto; padding: 150px var(--gutter) 100px; }
+.legal h1 { font-size: clamp(40px, 6vw, 68px); margin-bottom: 14px; }
+.legal h2 { font-size: clamp(26px, 3vw, 34px); margin: 48px 0 14px; }
+.legal p, .legal li { color: var(--ivory-dim); }
+.legal a { color: var(--champagne); }
+.legal__date { font-size: 13px; color: var(--bronze); }
+
 /* Responsivo */
 @media (max-width: 960px) {
   .nav__links { display: none; }

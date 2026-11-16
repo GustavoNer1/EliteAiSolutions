@@ -12,6 +12,8 @@
   const submitLabel = form.querySelector('.apply__submit span');
   const done = form.querySelector('.apply__done');
   let step = 0;
+  let touched = false;
+  const track = (name, params) => document.dispatchEvent(new CustomEvent('elite:track', { detail: { name, params } }));
 
   function show(n, focus) {
     step = n;
@@ -50,13 +52,19 @@
     ].join('\n');
   }
 
-  form.addEventListener('input', () => (error.hidden = true));
+  form.addEventListener('input', () => {
+    error.hidden = true;
+    if (!touched) { touched = true; track('form_start'); }
+  });
   back.addEventListener('click', () => show(step - 1, true));
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!valid(panels[step])) return;
-    if (step < panels.length - 1) { show(step + 1, true); return; }
+    if (step < panels.length - 1) { show(step + 1, true); track('form_step', { step: step + 1 }); return; }
+
+    const d = new FormData(form);
+    track('generate_lead', { team_size: d.get('equipe'), main_pain: d.get('desafio'), revenue_range: d.get('faturamento') });
 
     const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message())}`;
     form.querySelector('.apply__wa').href = url;
