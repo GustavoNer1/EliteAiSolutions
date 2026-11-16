@@ -1,7 +1,7 @@
 // Medição com consentimento: o Google Analytics só carrega depois do "Aceitar".
 // Para ligar, preencha GA_ID com o código da propriedade (começa com "G-").
 (() => {
-  const GA_ID = '';       // ex.: 'G-XXXXXXXXXX'
+  const GA_ID = 'G-GZE64RHTKJ';       // ex.: 'G-XXXXXXXXXX'
   const CLARITY_ID = '';  // opcional: código do projeto no Microsoft Clarity
   const KEY = 'elite-cookies';
 
