@@ -99,17 +99,30 @@ h3 { font-size: clamp(26px, 2.4vw, 34px); }
 }
 .btn--ghost { border: 1px solid var(--line); color: var(--ivory); padding: 11px 22px; font-size: 11px; }
 .btn--ghost:hover { border-color: var(--champagne); color: var(--champagne); }
-.btn--gold { border: 1px solid var(--champagne); color: var(--champagne); }
+/* Botão principal: preenchido em dourado, visível sem precisar passar o mouse */
+.btn--gold {
+  border: 1px solid var(--champagne); background: var(--champagne); color: var(--noir); font-weight: 500;
+  box-shadow: 0 14px 38px -14px rgba(201, 168, 106, .7), 0 0 0 1px rgba(201, 168, 106, .25);
+  transition: color .5s var(--ease), letter-spacing .5s var(--ease), box-shadow .5s var(--ease);
+}
 .btn--gold::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; background: var(--champagne);
+  content: ""; position: absolute; inset: 0; z-index: -1; background: var(--ivory);
   transform: translateY(101%); transition: transform .6s var(--ease);
 }
-.btn--gold:hover { color: var(--noir); letter-spacing: .28em; }
+.btn--gold:hover { color: var(--noir); letter-spacing: .28em; box-shadow: 0 18px 48px -12px rgba(201, 168, 106, .85), 0 0 0 1px rgba(244, 239, 230, .4); }
 .btn--gold:hover::before { transform: translateY(0); }
+.btn--gold:focus-visible { outline: 1px solid var(--ivory); outline-offset: 4px; }
 .btn--lg { padding: 20px 44px; font-size: 13px; }
-.link-arrow { font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--ivory-dim); transition: color .3s; }
+/* Botão do topo: dourado, sempre à vista */
+.nav__cta { border-color: var(--champagne); color: var(--noir); background: var(--champagne); font-weight: 500; }
+.nav__cta:hover { background: var(--ivory); border-color: var(--ivory); color: var(--noir); }
+/* Links secundários: mais contraste e sublinhado */
+.link-arrow {
+  font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--ivory);
+  padding-bottom: 6px; border-bottom: 1px solid rgba(201, 168, 106, .45); transition: color .3s, border-color .3s;
+}
 .link-arrow span { display: inline-block; transition: transform .4s var(--ease); }
-.link-arrow:hover { color: var(--ivory); }
+.link-arrow:hover { color: var(--champagne); border-color: var(--champagne); }
 .link-arrow:hover span { transform: translateX(6px); }
 
 /* Hero */
@@ -489,7 +502,7 @@ h3 { font-size: clamp(26px, 2.4vw, 34px); }
 .apply__back { all: unset; margin-right: auto; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--ivory-dim); }
 .apply__back:hover { color: var(--ivory); }
 .apply__back:focus-visible, .apply__submit:focus-visible, .apply__wa:focus-visible { outline: 1px solid var(--champagne); outline-offset: 4px; }
-.apply__submit { background: none; font-family: var(--sans); }
+.apply__submit { background: var(--champagne); font-family: var(--sans); cursor: pointer; }
 .apply__note { font-size: 13px; color: var(--bronze); margin: 22px 0 0; }
 .apply__done-title { font-family: var(--serif); font-size: clamp(30px, 3vw, 44px); line-height: 1.1; margin: 0 0 18px; }
 .apply__done p:not(.eyebrow):not(.apply__done-title) { color: var(--ivory-dim); margin: 0 0 30px; }
