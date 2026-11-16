@@ -377,6 +377,14 @@ h3 { font-size: clamp(26px, 2.4vw, 34px); }
 .compare__col--gold li { color: var(--ivory); text-decoration: none; display: flex; gap: 14px; align-items: center; }
 .compare__col--gold li::before { content: "✓"; color: var(--champagne); font-size: 13px; }
 
+/* Usos: onde cada serviço aparece no dia a dia */
+.uses { margin-top: clamp(64px, 9vw, 130px); }
+.uses__title { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--bronze); margin: 0 0 8px; }
+.uses__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(28px, 4vw, 64px); }
+.use { padding: 30px 0 34px; border-top: 1px solid var(--line); }
+.use h3 { font-size: clamp(24px, 2vw, 28px); line-height: 1.15; margin-bottom: 12px; }
+.use p { color: var(--ivory-dim); margin: 0; max-width: 380px; }
+
 /* Dúvidas */
 .faq {
   padding: clamp(80px, 12vw, 180px) var(--gutter); border-top: 1px solid var(--line);
@@ -500,7 +508,7 @@ h3 { font-size: clamp(26px, 2.4vw, 34px); }
   .card { min-height: 0; }
   .compare__grid { grid-template-columns: 1fr; }
   .compare__col + .compare__col { border-left: 0; border-top: 1px solid var(--line); }
-  .faq, .final__grid { grid-template-columns: minmax(0, 1fr); }
+  .faq, .final__grid, .uses__grid { grid-template-columns: minmax(0, 1fr); }
   .faq__head { position: static; }
 }
 @media (max-width: 560px) {
