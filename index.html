@@ -36,10 +36,10 @@
           "@type": "OfferCatalog",
           "name": "Serviços",
           "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Atendimento automático no WhatsApp com agente de IA" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Agendamento automático pelo WhatsApp" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Atendimento automático no WhatsApp com agente de IA", "url": "https://gustavoner1.github.io/EliteAiSolutions/atendimento-automatico-whatsapp.html" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Agendamento automático pelo WhatsApp", "url": "https://gustavoner1.github.io/EliteAiSolutions/agendamento-automatico-whatsapp.html" } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automação de processos e integração de sistemas" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sistemas e painéis de gestão sob medida" } }
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sistemas e painéis de gestão sob medida", "url": "https://gustavoner1.github.io/EliteAiSolutions/sistemas-sob-medida.html" } }
           ]
         }
       },
@@ -71,7 +71,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
 
@@ -185,6 +185,7 @@
           <h3>Sistemas sob medida</h3>
           <p>Plataformas, painéis e aplicações construídos a partir da sua operação real — não o contrário.</p>
           <ul><li>Sistemas web e internos</li><li>Dashboards de gestão</li><li>Integrações entre ferramentas</li></ul>
+          <a href="sistemas-sob-medida.html" class="link-arrow link-arrow--gold card__more">Sistemas sob medida <span aria-hidden="true">→</span></a>
         </article>
         <article class="card tilt reveal-up">
           <div class="card__glare"></div>
@@ -192,6 +193,7 @@
           <h3>Automação de processos</h3>
           <p>Tarefas repetitivas saem das mãos da sua equipe e passam a acontecer sozinhas, com precisão.</p>
           <ul><li>Agendamento e confirmações automáticas</li><li>Fluxos de vendas e CRM</li><li>WhatsApp, e-mail e planilhas integrados</li></ul>
+          <a href="agendamento-automatico-whatsapp.html" class="link-arrow link-arrow--gold card__more">Agendamento automático <span aria-hidden="true">→</span></a>
         </article>
         <article class="card tilt reveal-up">
           <div class="card__glare"></div>
@@ -199,6 +201,7 @@
           <h3>Inteligência artificial aplicada</h3>
           <p>IA treinada no contexto do seu negócio, para atender, decidir e produzir no seu padrão.</p>
           <ul><li>Agentes de atendimento no WhatsApp</li><li>Assistentes internos</li><li>Análise de dados e documentos</li></ul>
+          <a href="atendimento-automatico-whatsapp.html" class="link-arrow link-arrow--gold card__more">Atendimento automático <span aria-hidden="true">→</span></a>
         </article>
       </div>
 
@@ -206,11 +209,11 @@
         <p class="uses__title reveal-up">Onde isso entra no seu dia</p>
         <div class="uses__grid">
           <article class="use reveal-up">
-            <h3>Atendimento automático no WhatsApp</h3>
+            <h3><a href="atendimento-automatico-whatsapp.html">Atendimento automático no WhatsApp</a></h3>
             <p>Um agente de IA responde na hora, tira dúvidas e encaminha para a sua equipe o que precisa de gente.</p>
           </article>
           <article class="use reveal-up">
-            <h3>Agendamento automático</h3>
+            <h3><a href="agendamento-automatico-whatsapp.html">Agendamento automático</a></h3>
             <p>O cliente marca, confirma e remarca pelo WhatsApp. Os lembretes saem sozinhos e a agenda fica sempre em dia.</p>
           </article>
           <article class="use reveal-up">
@@ -226,7 +229,7 @@
             <p>Faturamento, pedidos e conversão em tempo real, em um só lugar.</p>
           </article>
           <article class="use reveal-up">
-            <h3>Integração de sistemas</h3>
+            <h3><a href="sistemas-sob-medida.html">Integração de sistemas</a></h3>
             <p>Planilhas, CRM, e-mail e WhatsApp trocando dados entre si, em um só fluxo.</p>
           </article>
         </div>
@@ -537,6 +540,7 @@
   <footer class="footer">
     <div class="brand"><img src="assets/monogram.svg" alt="" width="28" height="28"><span>Elite <em>AI</em> Solutions</span></div>
     <p>Automação de atendimento, agendamento e sistemas sob medida com IA ·<a href="https://wa.me/5511970299201" target="_blank" rel="noopener" class="footer__wa">WhatsApp (11) 97029-9201</a></p>
+    <nav class="footer__nav" aria-label="Serviços"><a href="atendimento-automatico-whatsapp.html">Atendimento automático</a><a href="agendamento-automatico-whatsapp.html">Agendamento automático</a><a href="sistemas-sob-medida.html">Sistemas sob medida</a></nav>
     <p class="footer__copy">© <span id="year"></span> Elite AI Solutions · <a href="privacidade.html" class="footer__link">Privacidade</a></p>
   </footer>
 
@@ -544,7 +548,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="apply.js?v=2"></script>
-  <script src="analytics.js?v=2"></script>
+  <script src="analytics.js?v=3"></script>
   <script src="main.js?v=5"></script>
   <script src="hero.js?v=3"></script>
   <script src="showcase.js?v=3"></script>

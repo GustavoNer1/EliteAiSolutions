@@ -127,7 +127,7 @@
     const a = e.target.closest('a');
     if (!a) return;
     const href = a.getAttribute('href') || '';
-    if (href === '#contato') track('cta_click', { location: place(a) });
+    if (href.endsWith('#contato')) track('cta_click', { location: place(a) });
     else if (href.includes('wa.me')) track('whatsapp_click', { location: place(a) });
   });
 
