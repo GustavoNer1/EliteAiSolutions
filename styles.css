@@ -207,6 +207,9 @@ h3 { font-size: clamp(26px, 2.4vw, 34px); }
   background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%), rgba(201, 168, 106, .16), transparent 55%);
 }
 .card:hover .card__glare { opacity: 1; }
+.card.is-touch .card__glare { opacity: .55; }
+.card.is-touch.is-focus { border-color: rgba(201, 168, 106, .5); }
+.card.is-touch.is-focus .card__glare { opacity: 1; }
 .card__num { font-family: var(--serif); font-size: 64px; color: var(--champagne); line-height: 1; margin-bottom: auto; transform: translateZ(40px); }
 .card h3 { margin: 70px 0 16px; transform: translateZ(30px); }
 .card p { color: var(--ivory-dim); margin: 0 0 26px; transform: translateZ(20px); }

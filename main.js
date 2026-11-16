@@ -84,7 +84,27 @@
   // Parallax leve no hero
   gsap.to('.hero__inner', { yPercent: 18, opacity: .2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
 
-  if (!fine) return;
+  if (!fine) {
+    // Toque: sem mouse, os cards inclinam e o brilho percorre conforme passam pela tela
+    gsap.utils.toArray('.tilt').forEach((card, i) => {
+      const glare = card.querySelector('.card__glare');
+      const side = i % 2 ? -1 : 1;
+      card.classList.add('is-touch');
+      gsap.set(card, { transformPerspective: 900 });
+      gsap.fromTo(card, { rotateX: 9, rotateY: 5 * side }, {
+        rotateX: -9, rotateY: -5 * side, ease: 'none',
+        scrollTrigger: {
+          trigger: card, start: 'top bottom', end: 'bottom top', scrub: .6,
+          onUpdate: (s) => {
+            glare.style.setProperty('--gy', `${s.progress * 100}%`);
+            glare.style.setProperty('--gx', `${50 + side * (s.progress - .5) * 70}%`);
+          },
+        },
+      });
+      ScrollTrigger.create({ trigger: card, start: 'top 62%', end: 'bottom 38%', toggleClass: { targets: card, className: 'is-focus' } });
+    });
+    return;
+  }
 
   // Cursor
   const cursor = document.querySelector('.cursor');
