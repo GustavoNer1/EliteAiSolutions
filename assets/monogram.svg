@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <path d="M50 4 L96 50 L50 96 L4 50 Z" stroke="#C9A86A" stroke-width="2"/>
+  <path d="M50 13 L87 50 L50 87 L13 50 Z" stroke="#C9A86A" stroke-width="1" stroke-dasharray="3 3" opacity=".7"/>
+  <text x="50" y="63" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="38" fill="#C9A86A">E</text>
+</svg>
