@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
 
@@ -34,6 +34,7 @@
     </a>
     <nav class="nav__links" aria-label="Principal">
       <a href="#servicos">Serviços</a>
+      <a href="#vitrine">Projetos</a>
       <a href="#processo">Processo</a>
       <a href="#sob-medida">Sob medida</a>
     </nav>
@@ -116,6 +117,105 @@
       </div>
     </section>
 
+    <!-- Vitrine: o que construímos -->
+    <section class="showcase" id="vitrine">
+      <div class="section-head">
+        <p class="eyebrow reveal-up">O que construímos</p>
+        <h2 class="reveal-up">Veja o tecido <em>em movimento.</em></h2>
+      </div>
+
+      <div class="showcase__wrap">
+        <div class="showcase__tabs" role="tablist" aria-label="Exemplos de projetos">
+          <button class="sc-tab is-active" role="tab" aria-selected="true" data-scene="0">
+            <span class="sc-tab__n">01</span>
+            <span class="sc-tab__body"><strong>Painel de gestão</strong><small>Seus números em tempo real, num só lugar.</small></span>
+            <span class="sc-tab__bar"><i></i></span>
+          </button>
+          <button class="sc-tab" role="tab" aria-selected="false" data-scene="1">
+            <span class="sc-tab__n">02</span>
+            <span class="sc-tab__body"><strong>Agente de IA no WhatsApp</strong><small>Atende, qualifica e agenda — 24 horas por dia.</small></span>
+            <span class="sc-tab__bar"><i></i></span>
+          </button>
+          <button class="sc-tab" role="tab" aria-selected="false" data-scene="2">
+            <span class="sc-tab__n">03</span>
+            <span class="sc-tab__body"><strong>Automação de processos</strong><small>Do lead ao relatório, sem ninguém copiar e colar.</small></span>
+            <span class="sc-tab__bar"><i></i></span>
+          </button>
+        </div>
+
+        <div class="screen" aria-live="off">
+          <div class="screen__chrome">
+            <span></span><span></span><span></span>
+            <div class="screen__url">app.suaempresa.com.br</div>
+            <div class="screen__live"><i></i>ao vivo</div>
+          </div>
+          <div class="screen__stage">
+
+            <!-- Cena 1: Dashboard -->
+            <div class="scene scene--dash is-active" data-scene="0">
+              <aside class="dash__side">
+                <img src="assets/monogram.svg" alt="" width="26" height="26">
+                <span class="is-on"></span><span></span><span></span><span></span>
+              </aside>
+              <div class="dash__main">
+                <div class="dash__top"><div><small>Visão geral</small><strong>Painel comercial</strong></div><div class="dash__pill">Hoje</div></div>
+                <div class="dash__kpis">
+                  <div class="kpi"><small>Faturamento</small><b data-count="248390" data-prefix="R$ ">R$ 0</b><em>+18%</em></div>
+                  <div class="kpi"><small>Pedidos</small><b data-count="1284">0</b><em>+9%</em></div>
+                  <div class="kpi"><small>Ticket médio</small><b data-count="193" data-prefix="R$ ">R$ 0</b><em>+6%</em></div>
+                  <div class="kpi"><small>Conversão</small><b data-count="48" data-dec="1" data-suffix="%">0%</b><em>+1,2 pp</em></div>
+                </div>
+                <div class="dash__charts">
+                  <div class="chart chart--bars"><small>Vendas por mês</small><div class="bars"></div></div>
+                  <div class="chart chart--line"><small>Leads × clientes</small>
+                    <svg viewBox="0 0 300 120" preserveAspectRatio="none">
+                      <path class="ln ln--a" d="M0 100 C30 92 50 70 80 74 S130 40 160 46 S220 20 250 24 S290 10 300 8"/>
+                      <path class="ln ln--b" d="M0 112 C40 108 60 96 90 98 S140 80 170 82 S230 62 260 60 S290 52 300 50"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="dash__rows">
+                  <div class="row"><span>#4821 · Marina S.</span><span>R$ 1.240</span><i>Pago</i></div>
+                  <div class="row"><span>#4822 · Grupo Atlas</span><span>R$ 8.900</span><i>Pago</i></div>
+                  <div class="row"><span>#4823 · Rafael M.</span><span>R$ 460</span><i class="pend">Em análise</i></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cena 2: WhatsApp -->
+            <div class="scene scene--chat" data-scene="1">
+              <div class="phone">
+                <div class="phone__head"><img src="assets/monogram.svg" alt="" width="30" height="30"><div><strong>Sua Empresa</strong><small class="phone__status">online</small></div></div>
+                <div class="phone__body"></div>
+                <div class="phone__input"><span>Mensagem</span><i></i></div>
+              </div>
+              <div class="chat__side">
+                <div class="mini"><small>Tempo de resposta</small><b>3 s</b></div>
+                <div class="mini"><small>Atendimento</small><b>24/7</b></div>
+                <div class="mini mini--gold"><small>Status do lead</small><b class="lead-status">Novo contato</b></div>
+              </div>
+            </div>
+
+            <!-- Cena 3: Automação -->
+            <div class="scene scene--flow" data-scene="2">
+              <svg class="flow__lines" viewBox="0 0 960 600">
+                <path id="fl1"/><path id="fl2"/><path id="fl3"/><path id="fl4"/>
+              </svg>
+              <div class="node n-l1"><i>◆</i><strong>Novo lead</strong><small>Site · Instagram</small></div>
+              <div class="node n-l2"><i>◆</i><strong>Planilha</strong><small>Pedidos do dia</small></div>
+              <div class="node node--core n-c"><i>✦</i><strong>IA qualifica</strong><small>Prioriza e organiza</small></div>
+              <div class="node n-r1"><i>◆</i><strong>CRM</strong><small>Cadastro automático</small></div>
+              <div class="node n-r2"><i>◆</i><strong>WhatsApp</strong><small>Resposta ao cliente</small></div>
+              <div class="flow__log"><small>Registro</small><ul></ul></div>
+              <div class="flow__count"><small>Tarefas automatizadas hoje</small><b>0</b></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <p class="showcase__note">Demonstrações ilustrativas. Cada projeto é desenhado sob medida para a sua operação.</p>
+    </section>
+
     <!-- Processo (scroll horizontal) -->
     <section class="process" id="processo">
       <div class="process__pin">
@@ -180,6 +280,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="main.js"></script>
+  <script src="main.js?v=3"></script>
+  <script src="hero.js?v=3"></script>
+  <script src="showcase.js?v=2"></script>
 </body>
 </html>

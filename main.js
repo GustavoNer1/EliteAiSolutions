@@ -132,41 +132,4 @@
     card.addEventListener('mouseleave', () => gsap.to(card, { rotateX: 0, rotateY: 0, duration: 1, ease: 'elastic.out(1, .5)' }));
   });
 
-  // Fios de costura no hero: pontos que se ligam ao cursor
-  const cv = document.querySelector('.hero__threads');
-  const ctx = cv.getContext('2d');
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  let pts = [], mouse = { x: -9999, y: -9999 }, W = 0, H = 0;
-  const resize = () => {
-    W = hero.offsetWidth; H = hero.offsetHeight;
-    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const n = Math.round((W * H) / 16000);
-    pts = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25 }));
-  };
-  resize();
-  window.addEventListener('resize', resize);
-  hero.addEventListener('mousemove', (e) => { const r = hero.getBoundingClientRect(); mouse = { x: e.clientX - r.left, y: e.clientY - r.top }; });
-  hero.addEventListener('mouseleave', () => (mouse = { x: -9999, y: -9999 }));
-  let visible = true;
-  new IntersectionObserver(([en]) => (visible = en.isIntersecting)).observe(hero);
-  const R = 160;
-  (function frame() {
-    requestAnimationFrame(frame);
-    if (!visible) return;
-    ctx.clearRect(0, 0, W, H);
-    for (const p of pts) {
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0 || p.x > W) p.vx *= -1;
-      if (p.y < 0 || p.y > H) p.vy *= -1;
-      const d = Math.hypot(p.x - mouse.x, p.y - mouse.y);
-      const near = d < R ? 1 - d / R : 0;
-      ctx.fillStyle = `rgba(201,168,106,${.18 + near * .7})`;
-      ctx.fillRect(p.x - .8, p.y - .8, 1.6, 1.6);
-      if (near) {
-        ctx.strokeStyle = `rgba(201,168,106,${near * .35})`;
-        ctx.setLineDash([3, 4]);
-        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
-      }
-    }
-  })();
 })();
