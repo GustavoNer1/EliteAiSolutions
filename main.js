@@ -41,9 +41,9 @@
   gsap.set('.nav', { y: -30, opacity: 0 });
 
   gsap.timeline({ defaults: { ease: 'expo.out' } })
-    .to('.loader .draw', { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut', stagger: .15 })
-    .to('.loader text', { opacity: 1, duration: .6 }, '-=.5')
-    .to('.loader', { yPercent: -100, duration: 1.1, ease: 'expo.inOut' }, '+=.25')
+    .to('.loader .draw', { strokeDashoffset: 0, duration: .8, ease: 'power2.inOut', stagger: .1 })
+    .to('.loader text', { opacity: 1, duration: .4 }, '-=.4')
+    .to('.loader', { yPercent: -100, duration: .8, ease: 'expo.inOut' }, '+=.1')
     .add(() => { document.body.classList.remove('is-loading'); lenis?.start(); document.querySelector('.loader')?.remove(); })
     .to('.nav', { y: 0, opacity: 1, duration: 1 }, '-=.5')
     .to('.hero__title .line > span', { yPercent: 0, duration: 1.4, stagger: .12 }, '-=.9')

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /video/
+Disallow: /amostras-voz/
+
+Sitemap: https://gustavoner1.github.io/EliteAiSolutions/sitemap.xml
