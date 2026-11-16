@@ -19,6 +19,7 @@ Cada envio para a branch `main` publica pelo GitHub Pages em cerca de 1 minuto.
 - Formulário de análise em 2 etapas (`apply.js`): nome, empresa e segmento; depois equipe, principal desafio e faixa de faturamento. As respostas abrem prontas no WhatsApp (11) 97029-9201.
 - Chamadas para ação pedem uma "análise do negócio", que filtra clientes, e não uma "conversa de 30 minutos".
 - Animações dos cards funcionando também no celular.
+- Botões de ação em destaque: o principal e o do topo são preenchidos em dourado; os links secundários têm sublinhado.
 - Política de privacidade (`privacidade.html`) e aviso de cookies em conformidade com a LGPD.
 
 ### Páginas de serviço (SEO)
