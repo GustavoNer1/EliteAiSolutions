@@ -13,8 +13,12 @@ if (!key) throw new Error('Defina a variável ELEVENLABS_API_KEY.');
 
 mkdirSync('public/voz', { recursive: true });
 
+// Opcional: `npm run voz -- 07` regenera só as cenas cujo id começa com "07".
+const only = process.argv[2];
+
 for (let i = 0; i < SCENES.length; i++) {
   const scene = SCENES[i];
+  if (only && !scene.id.startsWith(only)) continue;
   const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}`, {
     method: 'POST',
     headers: { 'xi-api-key': key, 'Content-Type': 'application/json', Accept: 'audio/mpeg' },

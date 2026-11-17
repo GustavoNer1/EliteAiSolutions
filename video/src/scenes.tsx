@@ -484,7 +484,7 @@ export const Chamada: React.FC<SceneProps> = ({ voice }) => {
   return (
     <AbsoluteFill style={{ justifyContent: 'center', alignItems: 'center', paddingBottom: 60 }}>
       <Voice id={SCENES[6].id} />
-      <Eyebrow at={0}>Uma conversa de 30 minutos</Eyebrow>
+      <Eyebrow at={0}>Uma análise do seu negócio</Eyebrow>
       <div style={{ textAlign: 'center', marginTop: 34 }}>
         <Words at={b('Vamos')} segs={[{ t: 'Vamos tirar as medidas' }]} style={{ ...big, fontSize: 124 }} />
         <Words at={b('do seu')} segs={[{ t: 'do seu negócio?', gold: true }]} style={{ ...big, fontSize: 124 }} />
@@ -516,8 +516,8 @@ export const Chamada: React.FC<SceneProps> = ({ voice }) => {
       <Reveal at={btnAt + 14} style={{ marginTop: 30 }}>
         <div style={{ fontFamily: sans, fontSize: 36, color: C.ivory, letterSpacing: '0.06em' }}>(11) 97029-9201</div>
       </Reveal>
-      <Reveal at={b('Em trinta')} style={{ position: 'absolute', bottom: 90, display: 'flex', alignItems: 'center', gap: 18 }}>
-        <Monogram at={b('Em trinta')} size={56} />
+      <Reveal at={b('Faremos uma')} style={{ position: 'absolute', bottom: 90, display: 'flex', alignItems: 'center', gap: 18 }}>
+        <Monogram at={b('Faremos uma')} size={56} />
         <Wordmark size={40} />
       </Reveal>
     </AbsoluteFill>

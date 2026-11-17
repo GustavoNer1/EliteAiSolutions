@@ -80,7 +80,7 @@
     { who: 'in', text: 'Oi! Vocês fazem sistema para clínica?' },
     { who: 'out', text: 'Olá! Fazemos sim. Criamos sistemas sob medida para clínicas: agenda, prontuário e confirmações automáticas. Posso entender melhor a sua?', lead: 'Qualificando' },
     { who: 'in', text: 'Tenho 3 dentistas e perco muito paciente por falta.' },
-    { who: 'out', text: 'Entendi. Com confirmação automática pelo WhatsApp dá para reduzir essas faltas. Que tal uma conversa de 30 min com nosso especialista?', lead: 'Lead qualificado' },
+    { who: 'out', text: 'Entendi. Com confirmação automática pelo WhatsApp dá para reduzir essas faltas. Que tal uma análise do seu negócio com nosso especialista?', lead: 'Lead qualificado' },
     { who: 'in', text: 'Pode ser amanhã às 10h?' },
     { who: 'card', title: 'Reunião agendada', text: 'Amanhã · 10:00 · Diagnóstico da sua operação', lead: 'Reunião agendada' },
   ];

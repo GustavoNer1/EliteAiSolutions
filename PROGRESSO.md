@@ -71,8 +71,8 @@ As páginas estão ligadas pelos cards da página inicial, pelo rodapé de todas
 ### Ajustes no site
 - [ ] Testar um título com o resultado concreto na primeira tela, como "Seu WhatsApp atendendo e agendando sozinho, 24 horas".
 - [ ] Criar a seção de prova (casos e depoimentos) e o bloco "quem está por trás".
-- [ ] Trocar "conversa de 30 min" na demonstração do chat (`showcase.js`).
-- [ ] Atualizar a última cena do vídeo, que ainda fala em "conversa de 30 minutos". Exige regenerar a narração, o que gasta créditos do ElevenLabs.
+- [x] Trocar "conversa de 30 min" na demonstração do chat (`showcase.js`).
+- [x] Atualizar a última cena do vídeo, que ainda fala em "conversa de 30 minutos". Exige regenerar a narração, o que gasta créditos do ElevenLabs.
 
 ### Acompanhamento
 - [ ] Conferir em 1 ou 2 dias se o sitemap passou para "Sucesso" no Search Console.
